@@ -1,9 +1,9 @@
 import { Selector } from "testcafe";
-import { login } from "./helper";
+import { login, mobileNav } from "./helper";
 
 
-const userName = "testqap";
-const pwd = "penny.2022"; 
+const userName = "";
+const pwd = ""; 
 
 
 fixture `log In test`
@@ -12,6 +12,7 @@ fixture `log In test`
    
 test('A user can login successfully', async t => {
     await login({userName, pwd, t});
+    await mobileNav(t);
     await t
         .click(Selector("[tabindex='34']")) 
         .click(Selector("[tabindex='35']")) // profile
@@ -29,6 +30,7 @@ fixture `log out test`
 
 test('A loged in user can successfully log out', async t => {
     await login({userName, pwd, t});
+    await mobileNav(t);
     await t
         .click(Selector("[tabindex='34']"))
         .click(Selector("[tabindex='39']"))

@@ -12,3 +12,11 @@ export const login = async({userName, pwd, t}) => {
         .typeText(pwdTxt, pwd, {paste:true})
         .click(loginBtn)
 };
+
+export const mobileNav = async t => {
+    try {
+        await t.click(Selector(".navbar-toggle"))
+    } catch (error) {
+        console.error(error)
+    }
+}
