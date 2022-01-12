@@ -1,6 +1,16 @@
 import { Selector } from "testcafe";
-import { login, mobileNav, userConfirmation } from "./helper";
-import { oldUser } from "./credentials";
+import { signup, login, mobileNav, userConfirmation } from "./helper";
+import { oldUser, newUser } from "./credentials";
+
+
+fixture `Signup test`
+    .page `https://www.edclub.com/signup`;
+
+test('A user can signup successfully', async t => {
+    await signup({user:newUser, t});
+    await userConfirmation({user:newUser, t}); 
+});
+    
 
 
 fixture `log In test`
@@ -14,13 +24,7 @@ test('A user can login successfully', async t => {
         t
     });
     await mobileNav(t);
-    await t
-        .click(Selector("[tabindex='34']")) 
-        .click(Selector("[tabindex='35']")); // profile
-    await userConfirmation({
-        user:oldUser,
-        t
-    });      
+    await userConfirmation({user:oldUser, t});      
 });
 
 test('A user cannot login if he/she enter the wrong password', async t => {
@@ -45,6 +49,6 @@ test('A loged in user can successfully log out', async t => {
     await mobileNav(t);
     await t
         .click(Selector("[tabindex='34']"))
-        .click(Selector("[tabindex='39']"))
+        .click(Selector("[tabindex='39']")) //logout
         .expect(Selector("h1").innerText).eql("Learn, teach, create!");
 });
