@@ -1,3 +1,11 @@
+/**
+ * This file contains the user credentials for the database by using Uers class.
+ * There are two users:
+ * 1. newUser - a user with all the required information.
+ * 2. userWithoutLName - a user without the last name.
+ */
+
+
 export class User{
     constructor(userName, firstName, lastName, pwd){
         this.userName = userName;
@@ -7,7 +15,7 @@ export class User{
     }
 }
 
-export const newUser = new User("testpqa17", "test", "altest", "penny.2022");
-export const userWithoutLName = new User("testqaq17", "test", "", "penny.2022");
+export const newUser = new User("testpqa25", "test", "altest", "penny.2022");
+export const userWithoutLName = new User("testqaq25", "test", "", "penny.2022");
 
 
