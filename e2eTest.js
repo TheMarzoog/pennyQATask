@@ -27,6 +27,28 @@ test('A user cannot signup without providing first name and password.', async t 
         .expect(Selector("div:nth-of-type(4) > .inline-error").innerText).eql("Please enter a password.");
 });
 
+test('A user cannot signup without providing a username', async t => {
+    let user = new User("", "test", "altest", "penny.2022");
+    await signup({user, t});
+    await t.expect(Selector("div:nth-of-type(3) > .inline-error").innerText).eql("Please provide a username or email address.");
+});
+
+test('A user cannot signup without providing username and password', async t => {
+    let user = new User("", "test", "altest", "");
+    await signup({user, t});
+    await t
+        .expect(Selector("div:nth-of-type(4) > .inline-error").innerText).eql("Please enter a password.")
+        .expect(Selector("div:nth-of-type(3) > .inline-error").innerText).eql("Please provide a username or email address.");
+});
+
+test('A user cannot signup without providing username and first name', async t => {
+    let user = new User("", "", "altest", "penny.2022");
+    await signup({user, t});
+    await t
+        .expect(Selector("form > div:nth-of-type(1) > .inline-error").innerText).eql("Please provide first name.")
+        .expect(Selector("div:nth-of-type(3) > .inline-error").innerText).eql("Please provide a username or email address.");
+});
+
 test('A user can signup successfully', async t => {
     await signup({user:newUser, t});
     await userConfirmation({user:newUser, t}); 
@@ -42,19 +64,7 @@ test('A user cannot signup with an existing username', async t => {
     await t.expect(Selector(".form-error-message").innerText).eql("That username/email is taken. Try another.");
 });
 
-test('A user cannot signup without providing a username', async t => {
-    let user = new User("", "test", "altest", "penny.2022");
-    await signup({user, t});
-    await t.expect(Selector("div:nth-of-type(3) > .inline-error").innerText).eql("Please provide a username or email address.");
-});
 
-test('A user cannot signup without providing username and password', async t => {
-    let user = new User("", "test", "altest", "");
-    await signup({user, t});
-    await t
-        .expect(Selector("div:nth-of-type(4) > .inline-error").innerText).eql("Please enter a password.")
-        .expect(Selector("div:nth-of-type(3) > .inline-error").innerText).eql("Please provide a username or email address.");
-});
 
 test('A user cannot signup without providing any information', async t => {
     let user = new User("", "", "", "");
