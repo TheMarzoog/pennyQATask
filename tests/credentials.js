@@ -15,7 +15,7 @@ export class User{
     }
 }
 
-export const newUser = new User("testpqa30", "test", "altest", "penny.2022");
-export const userWithoutLName = new User("testqaq30", "test", "", "penny.2022");
+export const newUser = new User("testpqa34", "test", "altest", "penny.2022");
+export const userWithoutLName = new User("testqaq34", "test", "", "penny.2022");
 
 
