@@ -41,6 +41,7 @@ export const login = async({userName, pwd, t}) => {
      * This function is used to login a user.
      * @param {String} userName - a string that contains the user name.
      * @param {String} pwd - a string that contains the password.
+     * @param {TestController} t - a TestController object.
      */
     
     //Selecting the nessesary elements.
