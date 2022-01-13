@@ -1,5 +1,5 @@
 import { Selector } from "testcafe";
-import { signup, login, mobileNav, userConfirmation } from "./helper";
+import { signup, login, mobileNav, userConfirmation } from "./helper.js";
 import { User, newUser, userWithoutLName } from "./credentials";
 
 
