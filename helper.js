@@ -9,16 +9,15 @@ export const signup = async({user, t}) => {
     const pwdTxt = Selector("#password");
     const signupBtn = Selector(".btn-main");
 
-    await t
-        .click(Selector(".__CC_primary_button")) //Accepting all the cookies
-        .typeText(firstNamtTxt, user.firstName, {paste:true})
-        .typeText(lastNameTxt, user.lastName, {paste:true})
-        .typeText(userNameTxt, user.userName, {paste:true})
-        .typeText(pwdTxt, user.pwd, {paste:true})
-        .click(signupBtn);
+    await t.click(Selector(".__CC_primary_button")); //Accepting all the cookies
+
+    if(user.firstName.length > 0) await t.typeText(firstNamtTxt, user.firstName, {paste:true});
+    if(user.lastName.length > 0) await t.typeText(lastNameTxt, user.lastName, {paste:true});
+    if(user.userName.length > 0) await t.typeText(userNameTxt, user.userName, {paste:true});
+    if(user.pwd.length > 0) await t.typeText(pwdTxt, user.pwd, {paste:true});
+    
+    await t.click(signupBtn);
 }
-
-
 
 
 export const login = async({userName, pwd, t}) => {
