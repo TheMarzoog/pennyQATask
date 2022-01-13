@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-chrome": "testcafe chrome ./tests/e2eTest.js --skip-js-errors",
+    "test-all": "testcafe all ./tests/e2eTest.js --skip-js-errors",
+    "test-mobile": "testcafe remote ./tests/e2eTest.js --skip-js-errors --qr-code"
   },
   "author": "",
   "license": "ISC",
