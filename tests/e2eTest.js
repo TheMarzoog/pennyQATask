@@ -71,11 +71,13 @@ test('A user cannot signup without providing any information', async t => {
 
 test('A user can signup successfully', async t => {
     await signup({user:newUser, t});
+    await mobileNav(t);
     await userConfirmation({user:newUser, t}); 
 });
 
 test('A user can signup successfully without providing last name.', async t =>{
     await signup({user:userWithoutLName, t});
+    await mobileNav(t);
     await userConfirmation({user:userWithoutLName, t});
 });
     
