@@ -1,4 +1,4 @@
-# Penny Software QA Test
+# Penny Software QA Task
 ### Task Goal:
 Build an end-to-end testing framework for a web app which validates the expected results/scenarios and imitates real user behavior
 ### Technology: 
